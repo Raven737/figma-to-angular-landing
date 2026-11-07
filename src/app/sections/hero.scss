@@ -1,0 +1,18 @@
+@use 'tokens' as *;
+
+.hero { padding-top: 80px; }
+.waves { position: absolute; left: -20%; top: 30%; width: 140%; max-width: none; opacity: .3; pointer-events: none; }
+.grid { position: relative; display: grid; gap: 64px; align-items: center; }
+.text { display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center; }
+h1 { font-size: var(--h-hero); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
+.text a { margin-top: 36px; }
+
+@include tablet { .hero { padding-top: 140px; padding-bottom: 100px; } .text { max-width: 640px; margin: 0 auto; } }
+
+@include desktop {
+  .hero { padding: 100px 0; }
+  .waves { left: -19%; top: 23%; width: 138%; }
+  .grid { grid-template-columns: 691fr 685fr; gap: 0; }
+  .text { align-items: flex-start; text-align: left; max-width: 691px; margin: 0; }
+  .text p { max-width: 640px; }
+}

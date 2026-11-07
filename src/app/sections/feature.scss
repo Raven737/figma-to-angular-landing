@@ -1,0 +1,17 @@
+@use 'tokens' as *;
+
+:host { display: block; }
+.grid { position: relative; display: flex; flex-direction: column; gap: 64px; align-items: center; }
+:host(.media-top) .media { order: -1; }
+.text { display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center; max-width: 660px; }
+.action { margin-top: 36px; }
+.media { width: 100%; max-width: 685px; display: flex; justify-content: center; }
+
+@include desktop {
+  .grid { flex-direction: row; justify-content: space-between; gap: 64px; }
+  .grid.reverse .media { order: -1; }
+  :host(.media-top) .media { order: 0; }
+  :host(.media-top) .grid.reverse .media { order: -1; }
+  .text { align-items: flex-start; text-align: left; flex: 0 1 657px; }
+  .media { flex: 0 1 685px; }
+}

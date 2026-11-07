@@ -1,0 +1,26 @@
+@use 'tokens' as *;
+
+.intro { display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center; margin-bottom: 60px;
+  p { max-width: 979px; } }
+
+.plan {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 25px;
+  padding: 40px 24px; border: 1px solid var(--yellow); border-radius: 10px; background: var(--white);
+  h3 { font-size: 24px; line-height: 36px; font-weight: 600; letter-spacing: 0; }
+  .price { margin-top: -10px; font-size: 36px; line-height: 44px; font-weight: 700; }
+  .tagline { font-weight: 500; line-height: 23px; }
+  ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 28px; font-size: 16px; line-height: 20px; }
+  li { display: flex; align-items: center; gap: 19px; svg { flex-shrink: 0; } }
+  a { margin-top: 15px; }
+}
+.plan.featured {
+  padding: 80px 24px; border-color: var(--navy); background: var(--navy); color: var(--white);
+  box-shadow: 0 4px 50px rgb(0 0 0 / 0.08);
+  .price { color: var(--yellow); }
+  ul { font-size: 18px; line-height: 23px; }
+}
+
+@include desktop {
+  .plan { padding: 40px 44px; }
+  .plan.featured { padding: 80px 44px; }
+}

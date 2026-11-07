@@ -1,0 +1,49 @@
+@use 'tokens' as *;
+
+:host { display: block; }
+
+.track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min(85%, 437px);
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 24px max(16px, calc((100% - min(85%, 437px)) / 2));
+  margin: -24px calc(-1 * var(--section-pad-x));
+  align-items: center;
+  &::-webkit-scrollbar { display: none; }
+  > ::ng-deep * { scroll-snap-align: center; }
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--blue);
+  cursor: pointer;
+  &.active { background: var(--navy); }
+}
+
+@include desktop {
+  .track {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-columns: auto;
+    gap: 32px;
+    overflow: visible;
+    padding: 0;
+    margin: 0;
+  }
+  .dots { display: none; }
+}
