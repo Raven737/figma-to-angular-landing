@@ -1,1 +1,109 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'tokens' as *;
+@use '@fontsource-variable/inter/wght.css';
+
+:root {
+  --navy: #043873;
+  --blue: #4f9cf9;
+  // Button colour from the design. White text on it is 2.8:1; for WCAG AA set it to #3568a6 (Primary/700)
+  --btn-bg: var(--blue);
+  --yellow: #ffe492;
+  --text: #212529;
+  --white: #ffffff;
+  --light-blue: #c4defd;
+  --pale-blue: #dcebfe;
+
+  --font: 'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --h-section: 36px;
+  --h-hero: 36px;
+  --section-pad-y: 80px;
+  --section-pad-x: 16px;
+  --container: 1376px;
+  --radius: 8px;
+
+  @include tablet {
+    --h-section: 54px;
+    --h-hero: 54px;
+    --section-pad-y: 120px;
+    --section-pad-x: 20px;
+  }
+  @include desktop {
+    --h-section: 72px;
+    --h-hero: 64px;
+    --section-pad-y: 140px;
+    --section-pad-x: 32px;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  font: 400 18px/30px var(--font);
+  letter-spacing: -0.02em;
+  color: var(--text);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3, p { margin: 0; }
+
+.container {
+  width: 100%;
+  max-width: calc(var(--container) + 2 * var(--section-pad-x));
+  margin: 0 auto;
+  padding: 0 var(--section-pad-x);
+}
+
+.section {
+  position: relative;
+  overflow: hidden;
+  padding: var(--section-pad-top, var(--section-pad-y)) 0 var(--section-pad-y);
+}
+[id] { scroll-margin-top: 56px; }
+@include desktop { [id] { scroll-margin-top: 92px; } }
+
+.section--dark { background: var(--navy); color: var(--white); }
+
+.h-section {
+  font-size: var(--h-section);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.hl { @include underline(yellow); }
+.hl--blue { @include underline(blue); }
+
+.lead { font-size: 18px; line-height: 30px; }
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 100;
+  padding: 12px 16px;
+  background: var(--yellow);
+  color: var(--navy);
+  border-radius: var(--radius);
+  font-weight: 500;
+  &:focus { top: 16px; }
+}

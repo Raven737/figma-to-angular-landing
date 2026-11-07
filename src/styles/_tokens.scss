@@ -1,0 +1,12 @@
+// Design tokens taken from the Whitepace Figma file (colour styles, text styles, layout grid)
+$bp-tablet: 768px;
+$bp-desktop: 1152px;
+
+@mixin tablet { @media (min-width: $bp-tablet) { @content; } }
+@mixin desktop { @media (min-width: $bp-desktop) { @content; } }
+
+// Section heading underline (brush stroke from the design)
+@mixin underline($colour: yellow) {
+  background: url('../../public/images/underline-#{$colour}.png') no-repeat 0 88% / 100% 0.36em;
+  padding-bottom: 0.08em;
+}
